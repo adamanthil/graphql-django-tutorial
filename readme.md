@@ -7,6 +7,8 @@ Visit: `polls/graphql` for interractive graphql api
 
 
 # GraphQL Sample API
+
+Querying all questions
 ```
 query {
   questions {
@@ -27,4 +29,23 @@ mutation {
     }
   }
 }
+```
+
+Using the GraphQL debug output:
+```
+{
+  questions {
+    id
+  }
+  __debug {
+    sql {
+      rawSql
+    }
+  }
+}
+```
+
+Dump GraphQL Schema:
+```
+venv/bin/python manage.py graphql_schema --indent 2
 ```

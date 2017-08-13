@@ -13,11 +13,15 @@ class QuestionType(graphene_django.DjangoObjectType):
 
 class PollsQuery(graphene.ObjectType):
 	questions = graphene.List(QuestionType)
+	single_question = graphene.Field(QuestionType, id=graphene.Int())
 	debug = graphene.Field(DjangoDebug, name='__debug')
 
 	def resolve_questions(self, args, context, info):
 		return Question.objects.all()
 
+	def resolve_single_question(self, args, context, info):
+		question_id = args.get('id')
+		return Question.objects.get(id=int(question_id))
 
 
 class NewQuestionMutation(graphene.Mutation):

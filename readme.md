@@ -45,6 +45,16 @@ Using the GraphQL debug output:
 }
 ```
 
+Hitting query endpoint with paramters
+```
+{
+  singleQuestion(id: 1) {
+    id
+    questionText
+  }
+}
+```
+
 Dump GraphQL Schema:
 ```
 venv/bin/python manage.py graphql_schema --indent 2
